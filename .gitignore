@@ -1,0 +1,11 @@
+*.out
+*.exe
+*.o
+
+/data/
+grafico_resultados.png
+/data/analisis_rendimiento.png
+
+__pycache__/
+*.py[cod]
+.venv/
