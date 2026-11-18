@@ -15,7 +15,7 @@ MODEL_COLORS = {
     "Modelo1": "tab:orange",
     "Modelo2": "tab:green",
 }
-DATASET_LINESTYLES = ("-", "--", ":")
+DATASET_LINESTYLES = ("-", "--", ":", "-.")
 PROCESS_TICKS = (1, 2, 4, 8, 16, 32)
 
 
@@ -24,18 +24,22 @@ def load_benchmark(path: Path) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(f"No se encontró el benchmark: {path}")
 
+    results = pd.read_csv(path).copy()
+
+    # Normalizar el nombre de la columna de tiempo
+    if "Tiempo_Total" in results.columns and "Tiempo_Segundos" not in results.columns:
+        results["Tiempo_Segundos"] = results["Tiempo_Total"]
+
     required_columns = {
         "Modelo",
         "Tamano_Dataset",
         "Procesos",
         "Tiempo_Segundos",
     }
-    results = pd.read_csv(path)
     missing_columns = required_columns.difference(results.columns)
     if missing_columns:
         raise ValueError(f"Faltan columnas requeridas: {sorted(missing_columns)}")
 
-    results = results.copy()
     results["Tamano_Dataset"] = pd.to_numeric(results["Tamano_Dataset"])
     results["Procesos"] = pd.to_numeric(results["Procesos"])
     results["Tiempo_Segundos"] = pd.to_numeric(results["Tiempo_Segundos"])
