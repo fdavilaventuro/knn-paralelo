@@ -19,7 +19,7 @@ mkdir -p "$ROOT_DIR/data"
 make clean
 make
 
-printf 'Modelo,Tamano_Dataset,Procesos,Tiempo_Segundos\n' > "$RESULTS_FILE"
+printf 'Modelo,Tamano_Dataset,Procesos,Tiempo_Total,Tiempo_Comp,Tiempo_Comm\n' > "$RESULTS_FILE"
 
 for N in "${TAMANOS_N[@]}"; do
     echo ">>> Generando dataset N = $N..."
