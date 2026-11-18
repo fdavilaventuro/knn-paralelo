@@ -5,7 +5,7 @@ set -euo pipefail
 # ==========================================
 # PARÁMETROS DE CONFIGURACIÓN DEL BENCHMARK
 # ==========================================
-TAMANOS_N=(5000 20000 50000)
+TAMANOS_N=(5000 20000 50000 100000)
 CORES=(2 4 8 16 32)
 MPI_FLAGS="--use-hwthread-cpus"
 # ==========================================
