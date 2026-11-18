@@ -16,7 +16,7 @@ MODEL_COLORS = {
     "Modelo2": "tab:green",
 }
 DATASET_LINESTYLES = ("-", "--", ":")
-PROCESS_TICKS = (1, 2, 4, 8, 16)
+PROCESS_TICKS = (1, 2, 4, 8, 16, 32)
 
 
 def load_benchmark(path: Path) -> pd.DataFrame:
